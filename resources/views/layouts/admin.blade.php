@@ -78,6 +78,9 @@
             {{-- ここまでナビゲーションバー --}}
                 
             <main class="py-4">
+                aaa
+                <h1>@yield('hoge')</h1>
+                @yield('hoge2')
                 {{-- コンテンツをここに入れるため、@yieldで空けておきます。 --}}
                 @yield('content')
             </main>
