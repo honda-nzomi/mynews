@@ -30,8 +30,21 @@ class ProfileController extends Controller
     // データベースに保存する
     $profile->fill($form);
     $profile->save();
-    // admin/news/createにリダイレクトする
+    // admin/profile/createにリダイレクトする
     return redirect('admin/profile/create');
+  }
+  
+  public function index(Request $request)
+  {
+      $cond_title = $request->cond_title;
+      if ($cond_title != '') {
+          // 検索されたら検索結果を取得する
+          $posts = Profile::where('title', $cond_title)->get();
+      } else {
+          // それ以外はすべてのプロフィールを取得する
+          $posts = Profile::all();
+      }
+      return view('admin.profile.index', ['posts' => $posts, 'cond_title' => $cond_title]);
   }
   
   public function edit(Request $request)

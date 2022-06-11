@@ -56,7 +56,6 @@ class NewsController extends Controller
       }
       return view('admin.news.index', ['posts' => $posts, 'cond_title' => $cond_title]);
   }
-  // 以下を追記
 
   public function edit(Request $request)
   {
